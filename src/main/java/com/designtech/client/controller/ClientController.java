@@ -20,7 +20,7 @@ import com.designtech.client.resource.SaveClientResource;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/client")
 public class ClientController {
 
 	 	@Autowired
