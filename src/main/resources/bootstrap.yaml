@@ -4,4 +4,26 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:3000
+      uri: http://localhost:30000
+
+
+# MySQL Data Source Configuration
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/legizclient
+    username: root
+    password: admin
+
+  # MySQL Dialect configuration
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: update
+
+springdoc:
+  api-docs:
+    path: /legiz-client-api-docs
+  swagger-ui:
+    path: /legiz-client-api-docs-ui.html
+
