@@ -20,7 +20,7 @@ import com.designtech.client.resource.SaveClientResource;
 
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/api/client")
 public class ClientController {
 
 	 	@Autowired
@@ -29,6 +29,20 @@ public class ClientController {
 	    @Autowired
 	    private ModelMapper mapper;
 
+	    @Operation(summary="Exist Client By Id", description="Get Client By Id", tags={"clients"})
+	    @GetMapping("/existclient/{clientId}")
+	    public boolean existById(@PathVariable Long clientId){
+			return clientService.existById(clientId);
+
+	    }
+	    
+	    @Operation(summary="Find Client By Id", description="Get Client By Id", tags={"clients"})
+	    @GetMapping("/findclient/{clientId}")
+	    public ClientResource findById(@PathVariable Long clientId){
+			return convertToResource(clientService.findById(clientId));
+	    }
+	    
+	    
 	    @Operation(summary="Get All Clients", description="Get All Clients", tags={"clients"})
 	    @GetMapping("/clients")
 	    public Page<ClientResource> getAllClients(Pageable pageable){
@@ -61,4 +75,7 @@ public class ClientController {
 	    {
 	        return mapper.map(entity, ClientResource.class);
 	    }
+	    
+	    
+	    
 }
