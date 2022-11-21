@@ -10,4 +10,6 @@ public interface ClientService {
     Client createClient(Client client);
     Client updateClient(Long clientId, Client clientRequest);
     ResponseEntity<?> deleteClient(Long clientId);
+    boolean existById(Long clientId);
+    Client findById(Long clientId);
 }

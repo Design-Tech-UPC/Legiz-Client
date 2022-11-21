@@ -43,4 +43,16 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.delete(client);
         return ResponseEntity.ok().build();
     }
+
+	@Override
+	public boolean existById(Long clientId) {
+		return clientRepository.existsById(clientId);
+	}
+
+	@Override
+	public Client findById(Long clientId) {
+		Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ResourceNotFoundException("Client","Id",clientId));
+		return client;
+	}
 }
